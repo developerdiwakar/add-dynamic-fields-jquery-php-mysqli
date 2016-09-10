@@ -26,15 +26,13 @@ if (isset($_POST["submit"])) {
 		$title = $mysqli->real_escape_string($_POST['title'][$i]);
 		$location = $mysqli->real_escape_string($_POST['location'][$i]);
 		$start_date = date('Y-m-d H:i:s', strtotime($_POST['start_date'][$i] ) );
-		if (isset($_POST['cur_working'][$i]) && !empty($_POST['cur_working'][$i]) ) {
-			$cur_working[$i] = $_POST['cur_working'][$i];
-			echo "<pre>";
-			var_dump($cur_working[$i]);
-			die;
-			if ($cur_working[$i] === "on") {
+		
+		if (isset($_POST['cur_working']) && !empty($_POST['cur_working']) ) {
+			//$cur_working[$i] = $_POST['cur_working'][$i];
+			//if ($cur_working[$i] === "on") {
 				$end_date = 0;
-			}
-		}else{
+			//}}
+		else{
 			$end_date = date('Y-m-d H:i:s', strtotime($_POST['end_date'][$i] ) );
 		}
 		$about_me = isset($_POST['about_me'][$i]) ? $_POST['about_me'][$i] : '';
