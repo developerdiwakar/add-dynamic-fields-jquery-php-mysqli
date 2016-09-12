@@ -27,38 +27,35 @@ if (isset($_POST["submit"])) {
 		$location = $mysqli->real_escape_string($_POST['location'][$i]);
 		$start_date = date('Y-m-d H:i:s', strtotime($_POST['start_date'][$i] ) );
 		
-		if (isset($_POST['cur_working']) && !empty($_POST['cur_working']) ) {
+		if (isset($_POST['cur_working'])[$i] && !empty($_POST['cur_working'][$i]) ) {
 			//$cur_working[$i] = $_POST['cur_working'][$i];
 			//if ($cur_working[$i] === "on") {
 				$end_date = 0;
 			//}}
-		else{
-			$end_date = date('Y-m-d H:i:s', strtotime($_POST['end_date'][$i] ) );
 		}
+		$end_date = date('Y-m-d H:i:s', strtotime($_POST['end_date'][$i] ) );
 		$about_me = isset($_POST['about_me'][$i]) ? $_POST['about_me'][$i] : '';
 
 		$query = "INSERT INTO work_experience ( org_name,title,location,start_date,end_date,
 												about_me ) " . 
 										"VALUES ('$org_name', '$title', '$location', '$start_date', '$end_date', '$about_me')";
-		$result = $mysqli->query($query);	
-		//var_dump($result);
-		if (!$result) {
+		$result = $mysqli->query($query);
+		echo "<br> Error! Sorry, Data not inserted.";
+	}	
+	if (!$result) {
 			print_r($mysqli->error);		
 		}else{
 
 			$rows_count = $result->num_rows;
+			echo "<br> Data Inserted Successfully";
 		}
-
-
-	}	
-	
-	if (isset($rows_count) > 0) {
+	/*if (isset($rows_count) > 0) {
 		# code...
 		echo "Data Inserted Successfully";
 	}
 	else
 		echo "Error! Sorry, Data not inserted.";
-
+*/
 	$mysqli->close();
 }
 
