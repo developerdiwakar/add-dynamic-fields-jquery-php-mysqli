@@ -31,7 +31,7 @@ CREATE TABLE `work_experience` (
   `org_name` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
   `location` varchar(50) NOT NULL,
-  `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `start_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `about_me` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
